@@ -3,9 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
-  SafeAreaView,
   TouchableOpacity,
   StatusBar,
   Alert,
@@ -20,8 +18,10 @@ export default function Login({ navigation }) {
   function handleLogin() {
     if (email != "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("login success"))
-        .catch((error) => Alert.alert("Login error", error.message));
+        .then(() => Alert.alert("Login", "User successfully Logged in"))
+        .catch((error) =>
+          Alert.alert("Login error", "Invalid email or password")
+        );
     } else {
       Alert.alert("Email / Password not provided");
     }
@@ -52,7 +52,7 @@ export default function Login({ navigation }) {
         onChangeText={(text) => setPassword(text)}
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text>Sign In</Text>
+        <Text>Login</Text>
       </TouchableOpacity>
       <View style={styles.navigationCont}>
         <Text>Dont have an account? </Text>

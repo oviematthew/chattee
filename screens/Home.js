@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
-import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
+import { signOut } from "firebase/auth";
+import {
+  View,
+  Alert,
+  TouchableOpacity,
+  Text,
+  Image,
+  StyleSheet,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-const imageUrl = "https://oviematthew.com/media/welcome.png";
+import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import { auth } from "../config/firebase";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -11,25 +18,26 @@ const Home = () => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <FontAwesome
-          name="search"
+        <MaterialCommunityIcons
+          name="location-exit"
           size={24}
-          color="#888"
+          color="orange"
           style={{ marginLeft: 15 }}
-        />
-      ),
-      headerRight: () => (
-        <Image
-          source={{ uri: imageUrl }}
-          style={{
-            width: 40,
-            height: 40,
-            marginRight: 15,
-          }}
+          onPress={handleSignOut}
         />
       ),
     });
   }, [navigation]);
+
+  const handleSignOut = () => {
+    signOut(auth) // Sign out the user
+      .then(() => {
+        Alert.alert("Signout", "Signed out successfully");
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -37,7 +45,7 @@ const Home = () => {
         onPress={() => navigation.navigate("Chat")}
         style={styles.chatButton}
       >
-        <Entypo name="chat" size={24} color="black" />
+        <Entypo name="chat" size={24} color="orange" />
       </TouchableOpacity>
     </View>
   );

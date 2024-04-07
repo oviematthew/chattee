@@ -20,7 +20,7 @@ export default function Signup({ navigation }) {
   function handleSignUp() {
     if (email != "" && password !== "") {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("Signup success"))
+        .then(() => Alert.alert("Registration", "User Registration Successful"))
         .catch((error) => Alert.alert("Signup error", error.message));
     } else {
       Alert.alert("Email / Password not provided");
@@ -56,7 +56,7 @@ export default function Signup({ navigation }) {
       </TouchableOpacity>
       <View style={styles.navigationCont}>
         <Text>Already have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.navigationText}>Login</Text>
         </TouchableOpacity>
       </View>
