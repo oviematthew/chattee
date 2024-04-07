@@ -2,16 +2,15 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import Constants from "expo-constants";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: Constants.manifest2.extra.apiKey,
-  authDomain: Constants.manifest2.extra.authDomain,
-  projectId: Constants.manifest2.extra.projectId,
-  storageBucket: Constants.manifest2.extra.storageBucket,
-  messagingSenderId: Constants.manifest2.extra.messagingSenderId,
-  appId: Constants.manifest2.extra.appId,
+  apiKey: "AIzaSyCwPckR7VJdFGyMri9PCLuLJ6bjQS6ZnY8",
+  authDomain: "chatapp-a13b2.firebaseapp.com",
+  projectId: "chatapp-a13b2",
+  storageBucket: "chatapp-a13b2.appspot.com",
+  messagingSenderId: "791876059295",
+  appId: "1:791876059295:web:1e8e177095a4cb91b262aa",
 };
 
 // Initialize Firebase
