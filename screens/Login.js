@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StatusBar,
   Alert,
 } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
