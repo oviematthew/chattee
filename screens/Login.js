@@ -5,7 +5,6 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StatusBar,
   Alert,
 } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -28,6 +27,7 @@ export default function Login({ navigation }) {
   }
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Welcome Back</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
@@ -70,9 +70,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   label: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     marginTop: 20,
+  },
+  title: {
+    fontSize: 30,
+    marginBottom: 30,
+    fontWeight: "bold",
   },
   input: {
     width: 300,

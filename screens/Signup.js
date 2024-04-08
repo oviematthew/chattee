@@ -28,6 +28,7 @@ export default function Signup({ navigation }) {
   }
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Join Us</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   label: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: "bold",
     marginTop: 20,
   },
@@ -81,6 +82,11 @@ const styles = StyleSheet.create({
     borderColor: "#333",
     borderRadius: 50,
     marginTop: 10,
+  },
+  title: {
+    fontSize: 30,
+    marginBottom: 30,
+    fontWeight: "bold",
   },
   button: {
     marginTop: 20,
