@@ -8,6 +8,7 @@ import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import Chat from "./screens/Chat";
 import Home from "./screens/Home";
+import OnboardingScreen from "./screens/OnboardingScreen";
 
 const Stack = createStackNavigator();
 const AuthenticatedUserContext = createContext({});
@@ -33,6 +34,7 @@ function ChatStack() {
 function AuthStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={Signup} />
     </Stack.Navigator>
@@ -42,18 +44,24 @@ function AuthStack() {
 function RootNavigator() {
   const { user, setUser } = useContext(AuthenticatedUserContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [firstLaunch, setFirstLaunch] = useState(true); // State to track first launch
+
   useEffect(() => {
-    // onAuthStateChanged returns an unsubscriber
     const unsubscribeAuth = onAuthStateChanged(
       auth,
       async (authenticatedUser) => {
-        authenticatedUser ? setUser(authenticatedUser) : setUser(null);
+        setUser(authenticatedUser);
         setIsLoading(false);
       }
     );
-    // unsubscribe auth listener on unmount
+    // Check if it's the first launch
+    if (firstLaunch) {
+      setIsLoading(false);
+      setFirstLaunch(false);
+    }
     return unsubscribeAuth;
-  }, [user]);
+  }, []);
+
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
