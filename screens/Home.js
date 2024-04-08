@@ -77,13 +77,9 @@ const Home = () => {
 
   return (
     <>
-      <View style={styles.header}>
-        <Text styles={styles.headerTitle}>Hi There</Text>
-      </View>
-
-      <View>
+      <View style={styles.page}>
         <View style={styles.header}>
-          <Text>Posts</Text>
+          <Text style={styles.headerTitle}>Posts</Text>
         </View>
         <FlatList data={posts} renderItem={renderPostItem} />
       </View>
@@ -126,18 +122,24 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   },
   header: {
-    marginBottom: 20,
+    backgroundColor: "#fff",
+    height: 70,
+    borderBottomWidth: 1,
+    borderBottomColor: "grey",
   },
   headerTitle: {
-    fontSize: 20,
+    padding: 10,
+    fontSize: 25,
     fontWeight: "bold",
   },
+  page: {
+    backgroundColor: "#fff",
+  },
   postContainer: {
+    backgroundColor: "#fff",
     padding: 15,
-    marginBottom: 10,
-    borderBottomWidth: 2,
-    borderTopWidth: 2,
-    borderColor: "#fff",
+    borderBottomWidth: 1,
+    borderColor: "#000",
   },
   postTitle: {
     fontSize: 20,
