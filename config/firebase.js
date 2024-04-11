@@ -1,9 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCwPckR7VJdFGyMri9PCLuLJ6bjQS6ZnY8",
   authDomain: "chatapp-a13b2.firebaseapp.com",
@@ -13,13 +12,15 @@ const firebaseConfig = {
   appId: "1:791876059295:web:1e8e177095a4cb91b262aa",
 };
 
-// Initialize Firebase
-initializeApp(firebaseConfig);
-export const auth = getAuth();
-export const database = getFirestore();
-export const postCollection = collection(database, "posts");
+const app = initializeApp(firebaseConfig);
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+});
+const database = getFirestore();
+const postCollection = collection(database, "posts");
 
-//load posts database function
+export { auth, database, postCollection };
+
 export function load() {
   const data = [];
 
