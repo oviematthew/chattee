@@ -18,7 +18,8 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const loadPosts = () => {
+    setLoading(true);
     load()
       .then((posts) => {
         // Update the state with the loaded tasks
@@ -29,29 +30,21 @@ const Home = () => {
         console.error("Error loading posts:", error);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+   
+    loadPosts();
   }, []);
 
   useEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <MaterialCommunityIcons
-          name="location-exit"
-          size={24}
-          color="orange"
-          style={{ marginLeft: 15 }}
-          onPress={handleSignOut}
-        />
-      ),
-      headerRight: () => (
-        <MaterialCommunityIcons
-          name="card-plus"
-          size={24}
-          color="orange"
-          style={{ marginRight: 15 }}
-          onPress={() => navigation.navigate("NewPost")}
-        />
-      ),
+    
+    const unsubscribe = navigation.addListener('focus', () => {
+      
+      loadPosts();
     });
+
+    return unsubscribe;
   }, [navigation]);
 
   const handleSignOut = () => {
