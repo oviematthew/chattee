@@ -84,6 +84,7 @@ const Home = () => {
     <TouchableOpacity onPress={() => handlePostPress(item)}>
       <View style={styles.card}>
         <Text style={styles.postTitle}>{item.title}</Text>
+        <Text style={styles.stamp}>{item.dtStamp}</Text>
         <Text>{item.shortContent}</Text>
       </View>
     </TouchableOpacity>
@@ -162,5 +163,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 10,
     color: "orange",
+  },
+  stamp: {
+    color: "grey",
+    fontStyle: "italic",
+    fontSize: 10,
+    paddingBottom : 5
   },
 });

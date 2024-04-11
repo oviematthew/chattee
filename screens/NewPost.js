@@ -9,6 +9,10 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
+import moment from "moment/moment";
+// import { useNavigation } from '@react-navigation/native';
+
 
 // Firebase
 import { addDoc } from "firebase/firestore";
@@ -19,13 +23,20 @@ export default function NewPost() {
   const [shortContent, setshortContent] = useState("");
   const [content, setContent] = useState("");
 
+  // Add new post
+  const addNewPost = async () => {
+  const dtStamp = moment().format('llll'); // Wed, Apr 10, 2024 10:21 PM
+
+  
   //Add new transaction
   const AddNewTransaction = async () => {
+    // const navigation = useNavigation(); // Access the navigation object
     try {
       const docRef = await addDoc(postCollection, {
         title,
         shortContent,
         content,
+        dtStamp,
       });
 
       setTitle("");
@@ -34,6 +45,7 @@ export default function NewPost() {
       Alert.alert("Posts", "Posts Added Successfully", [
         {
           text: "OK",
+          // onPress: () => navigation.navi gate('Home'), // Navigate back to the home screen
         },
       ]);
     } catch (error) {
@@ -74,7 +86,7 @@ export default function NewPost() {
       </TouchableOpacity>
     </SafeAreaView>
   );
-}
+}}
 
 const styles = StyleSheet.create({
   text: {

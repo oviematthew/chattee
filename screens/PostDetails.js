@@ -17,6 +17,7 @@ export default function PostDetails({ route }) {
           <View style={styles.container}>
             <Text style={styles.title}>{post.title}</Text>
             <Text style={styles.author}>Posted By Anonymous</Text>
+            <Text style={styles.stamp}>{post.dtStamp}</Text>
             <Text style={styles.text}>{post.content}</Text>
           </View>
         </ScrollView>
@@ -44,5 +45,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "grey",
     fontStyle: "italic",
+  },
+  stamp: {
+    marginTop: 10,
+    color: "grey",
+    fontStyle: "italic",
+    fontSize: 10
   },
 });

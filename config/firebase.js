@@ -36,6 +36,13 @@ export function load() {
           data.push(posts);
         });
 
+        //  // Sort the posts by dtStamp in descending order
+        //  data.sort((a, b) => {
+        //   const dateA = new Date(a.dtStamp);
+        //   const dateB = new Date(b.dtStamp);
+        //   return dateB - dateA;
+        // });
+
         resolve(data);
       })
       .catch((error) => {
