@@ -48,7 +48,7 @@ const Home = () => {
           size={24}
           color="orange"
           style={{ marginRight: 15 }}
-          onPress={() => navigation.navigate("NewPost")}
+          onPress={() => navigation.navigate("New Post")}
         />
       ),
     });
