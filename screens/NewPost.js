@@ -11,7 +11,7 @@ import {
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import moment from "moment/moment";
-// import { useNavigation } from '@react-navigation/native';
+
 
 
 // Firebase
@@ -30,7 +30,7 @@ export default function NewPost() {
 
   
   //Add new transaction
-  const AddNewTransaction = async () => {
+  // const AddNewTransaction = async () => {
     // const navigation = useNavigation(); // Access the navigation object
     try {
       const docRef = await addDoc(postCollection, {
@@ -46,7 +46,7 @@ export default function NewPost() {
       Alert.alert("Posts", "Post added successfully", [
         {
           text: "OK",
-          // onPress: () => navigation.navi gate('Home'), // Navigate back to the home screen
+          onPress: () => navigation.navigate('Home'), // Navigate back to the home screen
         },
       ]);
 
@@ -92,7 +92,7 @@ export default function NewPost() {
       </TouchableOpacity>
     </SafeAreaView>
   );
-}}
+}
 
 const styles = StyleSheet.create({
   text: {
