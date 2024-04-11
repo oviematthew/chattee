@@ -5,7 +5,6 @@ import {
   Alert,
   TouchableOpacity,
   Text,
-  Image,
   StyleSheet,
   FlatList,
   RefreshControl,
@@ -105,13 +104,12 @@ const Home = () => {
     <>
       <View style={styles.page}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Share your thoughts...</Text>
+          <Text style={styles.headerTitle}>Posts</Text>
         </View>
         <FlatList
           data={posts}
           renderItem={renderPostItem}
           refreshControl={
-            // Pull to refresh functionality
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
           }
         />
@@ -161,6 +159,7 @@ const styles = StyleSheet.create({
   page: {
     backgroundColor: "#fff",
   },
+
   card: {
     backgroundColor: "#fff",
     padding: 15,
@@ -186,6 +185,6 @@ const styles = StyleSheet.create({
     color: "grey",
     fontStyle: "italic",
     fontSize: 10,
-    paddingBottom : 5
+    paddingBottom: 5,
   },
 });

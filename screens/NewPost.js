@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  View,
   Alert,
   Text,
   TextInput,
@@ -10,9 +9,6 @@ import {
 } from "react-native";
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import moment from "moment/moment";
-
-
 
 // Firebase
 import { addDoc } from "firebase/firestore";
@@ -21,32 +17,24 @@ import { postCollection } from "../config/firebase";
 export default function NewPost() {
   const navigation = useNavigation();
   const [title, setTitle] = useState("");
-  const [shortContent, setShortContent] = useState(""); // Corrected variable name
+  const [shortContent, setShortContent] = useState("");
   const [content, setContent] = useState("");
 
   // Add new post
   const addNewPost = async () => {
-  const dtStamp = moment().format('llll'); // Wed, Apr 10, 2024 10:21 PM
-
-  
-  //Add new transaction
-  // const AddNewTransaction = async () => {
-    // const navigation = useNavigation(); // Access the navigation object
     try {
       const docRef = await addDoc(postCollection, {
         title,
         shortContent,
         content,
-        dtStamp,
       });
 
       setTitle("");
-      setShortContent(""); // Updated to use the correct state variable
+      setShortContent("");
       setContent("");
       Alert.alert("Posts", "Post added successfully", [
         {
           text: "OK",
-          onPress: () => navigation.navigate('Home'), // Navigate back to the home screen
         },
       ]);
 
