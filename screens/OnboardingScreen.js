@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, ImageBackground } from "react-native";
+import { Image, ImageBackground, StyleSheet } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 
 export default function OnboardingScreen({ navigation }) {
@@ -7,6 +7,7 @@ export default function OnboardingScreen({ navigation }) {
     <Onboarding
       onSkip={() => navigation.replace("Login")}
       onDone={() => navigation.navigate("Login")}
+      bottomBarHighlight={false}
       pages={[
         {
           backgroundColor: "black",
@@ -23,8 +24,7 @@ export default function OnboardingScreen({ navigation }) {
             </ImageBackground>
           ),
           title: "",
-          subtitle:
-            "Learn about the complexities of addiction, its impact on individuals, families, and communities, and the journey to recovery.",
+          subtitle: "",
         },
         {
           backgroundColor: "black",
@@ -35,7 +35,7 @@ export default function OnboardingScreen({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                opacity: "0.01"
+                opacity: 0.01
               }}
             >
               <Image source={require("../assets/bg.jpg")} />
@@ -54,7 +54,7 @@ export default function OnboardingScreen({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                opacity: "0.3"
+                opacity: 0.3
               }}
             >
               <Image source={require("../assets/bg.jpg")} />
@@ -65,6 +65,15 @@ export default function OnboardingScreen({ navigation }) {
             "Explore strategies for embracing change and breaking free from the cycle of addiction. Find inspiration, motivation, and practical tips to reclaim control of your life.",
         },
       ]}
+      subTitleStyles={styles.subtitle} 
     />
   );
 }
+
+const styles = StyleSheet.create({
+  subtitle: {
+    fontSize: 12, 
+    textAlign: "center", 
+    color: "white", 
+  },
+});
