@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Alert,
@@ -9,18 +9,20 @@ import {
   SafeAreaView,
 } from "react-native";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 // Firebase
 import { addDoc } from "firebase/firestore";
 import { postCollection } from "../config/firebase";
 
 export default function NewPost() {
+  const navigation = useNavigation();
   const [title, setTitle] = useState("");
   const [shortContent, setshortContent] = useState("");
   const [content, setContent] = useState("");
 
-  //Add new transaction
-  const AddNewTransaction = async () => {
+  // Add new post
+  const addNewPost = async () => {
     try {
       const docRef = await addDoc(postCollection, {
         title,
@@ -31,13 +33,16 @@ export default function NewPost() {
       setTitle("");
       setshortContent("");
       setContent("");
-      Alert.alert("Posts", "Posts Added Successfully", [
+      Alert.alert("Posts", "Post added successfully", [
         {
           text: "OK",
         },
       ]);
+      
+      // Navigate back to the home screen
+      navigation.navigate("Home");
     } catch (error) {
-      console.error("Error adding transaction:", error);
+      console.error("Error adding post:", error);
     }
   };
 
@@ -66,7 +71,7 @@ export default function NewPost() {
       <TouchableOpacity style={styles.buttonCont}>
         <Button
           style={styles.button}
-          onPress={AddNewTransaction}
+          onPress={addNewPost}
           labelStyle={{ color: "#ffffff" }}
         >
           Create Post
