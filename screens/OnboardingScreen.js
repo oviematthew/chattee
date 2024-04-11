@@ -16,35 +16,49 @@ export default function OnboardingScreen({ navigation }) {
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                width: "100%",
+                width: "100%"
               }}
             >
-              <Image source={require("../assets/bg.jpg")} />
+              <Image source={require("../assets/logo.png")} />
             </ImageBackground>
           ),
-          title: "Chattee",
+          title: "",
           subtitle:
             "Learn about the complexities of addiction, its impact on individuals, families, and communities, and the journey to recovery.",
         },
         {
-          backgroundColor: "orange",
+          backgroundColor: "black",
           image: (
-            <Image
-              source={require("../assets/logo.png")}
-              style={{ width: 200, height: 200, objectFit: "contain" }}
-            />
+            <ImageBackground
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                opacity: "0.3"
+              }}
+            >
+              <Image source={require("../assets/bg.jpg")} />
+            </ImageBackground>
           ),
           title: "Building a Support System",
           subtitle:
             "Discover the importance of support networks in overcoming addiction. Explore resources, connect with peers, and find encouragement on your path to recovery",
         },
         {
-          backgroundColor: "orange",
+          backgroundColor: "black",
           image: (
-            <Image
-              source={require("../assets/logo.png")}
-              style={{ width: 200, height: 200, objectFit: "contain" }}
-            />
+            <ImageBackground
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                opacity: "0.3"
+              }}
+            >
+              <Image source={require("../assets/bg.jpg")} />
+            </ImageBackground>
           ),
           title: "Embracing Change",
           subtitle:
