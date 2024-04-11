@@ -9,10 +9,9 @@
 #### Onboarding Screens
 
 <div style="display: flex; flex-direction: row; gap: 20px;">
-  <img src="./assets/screenshot.png" width="200px" alt="screenshot">
-  <img src="./assets/screenshot-2.png" width="200px" alt="screenshot">
-  <img src="./assets/screenshot-3.png" width="200px" alt="screenshot">
-  <img src="./assets/screenshot-4.png" width="200px" alt="screenshot">
+  <img src="./assets/onboarding.png" width="200px" alt="screenshot">
+  <img src="./assets/onboarding-b.png" width="200px" alt="screenshot">
+  <img src="./assets/onboarding-c.png" width="200px" alt="screenshot">
 </div>
 
 #### Auth Screens
@@ -33,7 +32,7 @@
 
 #### Realtime Chat Video
 
-<img src="./assets/demo.gif" width="200px" alt="screenshot">
+<img src="./assets/demo.gif" alt="screenshot">
 
 ### Technologies Used
 
