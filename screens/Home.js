@@ -47,6 +47,28 @@ const Home = () => {
     return unsubscribe;
   }, [navigation]);
 
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <MaterialCommunityIcons
+          name="location-exit"
+          size={24}
+          color="orange"
+          style={{ marginLeft: 15 }}
+          onPress={handleSignOut}
+        />
+      ),
+      headerRight: () => (
+        <MaterialCommunityIcons
+          name="card-plus"
+          size={24}
+          color="orange"
+          style={{ marginRight: 15 }}
+          onPress={() => navigation.navigate("New Post")}
+        />
+      )})
+  }, [navigation]);
+
   const handleSignOut = () => {
     signOut(auth) // Sign out the user
       .then(() => {
