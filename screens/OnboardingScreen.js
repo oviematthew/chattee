@@ -35,7 +35,7 @@ export default function OnboardingScreen({ navigation }) {
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
-                opacity: "0.3"
+                opacity: "0.01"
               }}
             >
               <Image source={require("../assets/bg.jpg")} />
