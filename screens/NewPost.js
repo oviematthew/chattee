@@ -18,7 +18,7 @@ import { postCollection } from "../config/firebase";
 export default function NewPost() {
   const navigation = useNavigation();
   const [title, setTitle] = useState("");
-  const [shortContent, setshortContent] = useState("");
+  const [shortContent, setShortContent] = useState(""); // Corrected variable name
   const [content, setContent] = useState("");
 
   // Add new post
@@ -31,14 +31,14 @@ export default function NewPost() {
       });
 
       setTitle("");
-      setshortContent("");
+      setShortContent(""); // Updated to use the correct state variable
       setContent("");
       Alert.alert("Posts", "Post added successfully", [
         {
           text: "OK",
         },
       ]);
-      
+
       // Navigate back to the home screen
       navigation.navigate("Home");
     } catch (error) {
@@ -58,7 +58,7 @@ export default function NewPost() {
       <TextInput
         style={styles.input}
         placeholder="Post Short Description"
-        onChangeText={setshortContent}
+        onChangeText={setShortContent}
         value={shortContent}
       />
       <TextInput
@@ -66,6 +66,8 @@ export default function NewPost() {
         placeholder="Post Content"
         onChangeText={setContent}
         value={content}
+        multiline={true} // Enable multiline input
+        numberOfLines={4} // Set the number of lines you want to show by default
       />
 
       <TouchableOpacity style={styles.buttonCont}>
