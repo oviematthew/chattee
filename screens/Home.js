@@ -8,15 +8,17 @@ import {
   Image,
   StyleSheet,
   FlatList,
+  RefreshControl,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons, Entypo } from "@expo/vector-icons";
 import { auth, load } from "../config/firebase";
 
 const Home = () => {
   const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const loadPosts = () => {
     setLoading(true);
@@ -24,10 +26,12 @@ const Home = () => {
       .then((posts) => {
         setPosts(posts);
         setLoading(false);
+        setRefreshing(false);
       })
       .catch((error) => {
         console.error("Error loading posts:", error);
         setLoading(false);
+        setRefreshing(false);
       });
   };
 
@@ -46,8 +50,8 @@ const Home = () => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <MaterialCommunityIcons
-          name="location-exit"
+        <Ionicons
+          name="exit"
           size={24}
           color="orange"
           style={{ marginLeft: 15 }}
@@ -80,6 +84,7 @@ const Home = () => {
     navigation.navigate("Post Details", { post });
   };
 
+  //Posts from db
   const renderPostItem = ({ item }) => (
     <TouchableOpacity onPress={() => handlePostPress(item)}>
       <View style={styles.card}>
@@ -89,13 +94,26 @@ const Home = () => {
     </TouchableOpacity>
   );
 
+  //Load posts on refresh
+  const onRefresh = () => {
+    setRefreshing(true); // Set refreshing state to true
+    loadPosts(); // Reload posts
+  };
+
   return (
     <>
       <View style={styles.page}>
         <View style={styles.header}>
           <Text style={styles.headerTitle}>Share your thoughts...</Text>
         </View>
-        <FlatList data={posts} renderItem={renderPostItem} />
+        <FlatList
+          data={posts}
+          renderItem={renderPostItem}
+          refreshControl={
+            // Pull to refresh functionality
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+        />
       </View>
       <TouchableOpacity
         onPress={() => navigation.navigate("Chat")}
