@@ -2,9 +2,10 @@ import { initializeApp } from "firebase/app";
 import { initializeAuth, getReactNativePersistence } from "firebase/auth";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import { ApiKey } from "@env";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCwPckR7VJdFGyMri9PCLuLJ6bjQS6ZnY8",
+  apiKey: ApiKey,
   authDomain: "chatapp-a13b2.firebaseapp.com",
   projectId: "chatapp-a13b2",
   storageBucket: "chatapp-a13b2.appspot.com",
